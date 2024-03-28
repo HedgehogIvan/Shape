@@ -5,6 +5,7 @@ from math import pi, pow
 class Circle(Figure):
     def __init__(self, radius):
         self.radius = radius
+        super().__init__()
 
     def area(self):
         return pi * pow(self.radius, 2)

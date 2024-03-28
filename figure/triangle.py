@@ -8,6 +8,8 @@ class Triangle(Figure):
         self.s_2 = side_2
         self.s_3 = side_3
 
+        super().__init__()
+
     def area(self):
         semi_p = self.perimeter() / 2
         area = sqrt(

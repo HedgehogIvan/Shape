@@ -18,6 +18,8 @@ class ConvexPolygon(Figure):
         self._catch_wrong_sides_value(self.sides)
         self._catch_wrong_angles_value(self.angles)
 
+        super().__init__()
+
     def _catch_wrong_sides_value(self, sides: list[int|float]):
         """
         Метод отлова ошибок для значений сторон многоугольника
