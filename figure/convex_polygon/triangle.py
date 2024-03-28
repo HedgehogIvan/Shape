@@ -4,7 +4,7 @@ from math import sqrt, pow, degrees, acos
 
 class Triangle(ConvexPolygon):
     def __init__(self, side1, side2, side3):
-        super().__init__(*self.__convert_to_polygon(side1, side2, side3))
+        super().__init__(*self._convert_to_polygon({"sides": [side1, side2, side3]}))
 
     def get_area(self):
         semi_p = self.get_perimeter() / 2
@@ -24,12 +24,10 @@ class Triangle(ConvexPolygon):
         Метод для определения, является ли треугольник прямоугольным
         :return: True, если является False, если нет
         """
-        s1 = self.sides[0]
-        s2 = self.sides[1]
-        s3 = self.sides[2]
-        pow_s1 = pow(self.sides[0], 2)
-        pow_s2 = pow(self.sides[1], 2)
-        pow_s3 = pow(self.sides[2], 2)
+        s1, s2, s3 = self.sides
+        pow_s1 = pow(s1, 2)
+        pow_s2 = pow(s2, 2)
+        pow_s3 = pow(s3, 2)
 
         if s1 > s2 and s1 > s3:
             return pow_s1 == pow_s2 + pow_s3
@@ -38,29 +36,25 @@ class Triangle(ConvexPolygon):
         else:
             return pow_s3 == pow_s1 + pow_s2
 
-    def __convert_to_polygon(
-            self,
-            side1: (int|float),
-            side2: (int|float),
-            side3: (int|float)
+    def _convert_to_polygon(
+            self, dict_sides: dict
     ) -> tuple[list[int|float], list[int|float]]:
         """
         Метод для преобразования параметров для создания треугольников в параметры выпуклого многоугольника
-        :param side1: 1-ая сторона треугольника
-        :param side2: 2-ая сторона треугольника
-        :param side3: 3-ья сторона треугольника
+        :param dict_sides: Словарь со списком сторон
         :return: tuple
         """
-        sides = [side1, side2, side3]
+        sides = dict_sides["sides"]
+        s1, s2, s3 = sides
 
         ang_1 = degrees(acos(
-            (pow(side1, 2) + pow(side2, 2) - pow(side3, 2)) / (2 * side1 * side2)
+            (pow(s1, 2) + pow(s2, 2) - pow(s3, 2)) / (2 * s1 * s2)
         ))
         ang_2 = degrees(acos(
-            (pow(side2, 2) + pow(side3, 2) - pow(side1, 2)) / (2 * side2 * side3)
+            (pow(s2, 2) + pow(s3, 2) - pow(s1, 2)) / (2 * s2 * s3)
         ))
         ang_3 = degrees(acos(
-            (pow(side1, 2) + pow(side3, 2) - pow(side2, 2)) / (2 * side1 * side3)
+            (pow(s1, 2) + pow(s3, 2) - pow(s2, 2)) / (2 * s1 * s3)
         ))
 
         angles = [ang_1, ang_2, ang_3]
