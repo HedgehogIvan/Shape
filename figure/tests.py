@@ -1,6 +1,6 @@
 import unittest
 from .circle import Circle
-from .triangle import Triangle
+from .convex_polygon.triangle import Triangle
 
 
 class TestCircle(unittest.TestCase):

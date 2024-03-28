@@ -1,5 +1,5 @@
 from figure.circle import Circle
-from figure.triangle import Triangle
+from figure.convex_polygon.triangle import Triangle
 
 c_test = Circle(5)
 t_test = Triangle(9, 12, 15)
