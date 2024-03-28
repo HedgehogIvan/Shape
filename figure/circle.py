@@ -4,6 +4,9 @@ from math import pi, pow
 
 class Circle(Figure):
     def __init__(self, radius):
+        if radius <= 0:
+            raise ValueError(f"Окружность с радиусом: {radius}")
+
         self.radius = radius
         super().__init__()
 
