@@ -9,24 +9,26 @@ class Triangle(Figure):
         self.s_3 = side_3
 
     def area(self):
-        p = self.perimeter()
-        return sqrt(
-            p *
-            (p-self.s_1) *
-            (p-self.s_2) *
-            (p-self.s_3)
+        semi_p = self.perimeter() / 2
+        area = sqrt(
+            semi_p *
+            (semi_p - self.s_1) *
+            (semi_p - self.s_2) *
+            (semi_p - self.s_3)
         )
+        return area
 
     def perimeter(self):
-        return (
-                       self.s_1 + self.s_2 + self.s_3
-               ) / 2
+        return self.s_1 + self.s_2 + self.s_3
 
     def is_right(self) -> bool:
-        if self.s_1 > self.s_2:
-            if self.s_1 > self.s_3:
-                return pow(self.s_1, 2) == pow(self.s_2, 2) + pow(self.s_3, 2)
-            return pow(self.s_3, 2) == pow(self.s_2, 2) + pow(self.s_1, 2)
-        elif self.s_2 > self.s_3:
-            return pow(self.s_3, 2) == pow(self.s_2, 2) + pow(self.s_1, 2)
-        return pow(self.s_2, 2) == pow(self.s_1, 2) + pow(self.s_3, 2)
+        pow_s1 = pow(self.s_1, 2)
+        pow_s2 = pow(self.s_2, 2)
+        pow_s3 = pow(self.s_3, 2)
+
+        if self.s_1 > self.s_2 and self.s_1 > self.s_3:
+            return pow_s1 == pow_s2 + pow_s3
+        elif self.s_2 > self.s_1 and self.s_2 > self.s_3:
+            return pow_s2 == pow_s1 + pow_s3
+        else:
+            return pow_s3 == pow_s1 + pow_s2

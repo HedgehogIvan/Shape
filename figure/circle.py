@@ -7,5 +7,7 @@ class Circle(Figure):
         self.radius = radius
 
     def area(self):
-        area = pi * pow(self.radius, 2)
-        return area
+        return pi * pow(self.radius, 2)
+
+    def perimeter(self):
+        return 2 * pi * self.radius
