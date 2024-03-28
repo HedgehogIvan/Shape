@@ -10,8 +10,8 @@ class Triangle(Figure):
 
         super().__init__()
 
-    def area(self):
-        semi_p = self.perimeter() / 2
+    def get_area(self):
+        semi_p = self.get_perimeter() / 2
         area = sqrt(
             semi_p *
             (semi_p - self.s_1) *
@@ -20,7 +20,7 @@ class Triangle(Figure):
         )
         return area
 
-    def perimeter(self):
+    def get_perimeter(self):
         return self.s_1 + self.s_2 + self.s_3
 
     def is_right(self) -> bool:

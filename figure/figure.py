@@ -3,11 +3,11 @@ import math
 
 class Figure:
     def __init__(self):
-        self.area = self.area()
-        self.perimeter = self.perimeter()
+        self.area = self.get_area()
+        self.perimeter = self.get_perimeter()
 
-    def area(self):
+    def get_area(self):
         return None
 
-    def perimeter(self):
+    def get_perimeter(self):
         return None
