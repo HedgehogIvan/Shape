@@ -8,7 +8,7 @@ class Rectangle(ConvexPolygon):
         )
 
     def get_area(self):
-        return self.sides[0] * self.sides[1]
+        return round(self.sides[0] * self.sides[1], 3)
 
     def _convert_to_polygon(self, side_1, side_2):
         sides = [side_1, side_2, side_1, side_2]
