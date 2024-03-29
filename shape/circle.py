@@ -1,4 +1,4 @@
-from .figure import Figure
+from .shape import Figure
 from math import pi, pow
 
 
