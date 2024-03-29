@@ -6,7 +6,7 @@ class Triangle(ConvexPolygon):
     def __init__(self, side1, side2, side3):
         super().__init__(
             *self._convert_to_polygon(
-                {"sides": [side1, side2, side3]}
+               side1, side2, side3
             )
         )
 
@@ -38,15 +38,17 @@ class Triangle(ConvexPolygon):
             return pow_s3 == pow_s1 + pow_s2
 
     def _convert_to_polygon(
-            self, dict_sides: dict
+            self, side_1, side_2, side_3
     ) -> tuple[list[int|float], list[int|float]]:
         """
         Метод для преобразования параметров для создания треугольников в параметры выпуклого многоугольника
-        :param dict_sides: Словарь со списком сторон
+        :param side_1: Первая сторона треугольника
+        :param side_2: Вторая сторона треугольника
+        :param side_3: Третья сторона треугольника
         :return: tuple
         """
-        sides = dict_sides["sides"]
-        s1, s2, s3 = sides
+        sides = [side_1, side_2, side_3]
+        s1, s2, s3 = side_1, side_2, side_3
 
         self._catch_wrong_sides_value(sides)
 

@@ -75,14 +75,5 @@ class ConvexPolygon(Figure):
                 f'Сумма углов в многоугольнике ({sum(angles)}) не равна необходимому значению ({convex_sum_angles})'
             )
 
-    def _convert_to_polygon(self, **params):
-        """
-        Метод для преобразования параметров, необходимых для фигуры
-        в параметры для многоугольника и его методов
-        :param params: Параметры фигуры
-        :return: Параметры многоугольника
-        """
-        pass
-
     def get_perimeter(self):
         return sum(self.sides)
