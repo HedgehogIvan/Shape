@@ -1,4 +1,7 @@
 import unittest
+
+from figure.convex_polygon.rectangle import Rectangle
+from figure.convex_polygon.square import Square
 from .circle import Circle
 from .convex_polygon.triangle import Triangle
 
@@ -88,6 +91,35 @@ class TestTriangle(unittest.TestCase):
 
     def test_perimeter_t_3(self):
         self.assertEqual(self.t_3.perimeter, 27.53)
+
+class TestRectangle(unittest.TestCase):
+    def setUp(self) -> None:
+        self.r1 = Rectangle(5, 10)
+        self.r2 = Rectangle(7, 7)
+    def test_area_1(self):
+        self.assertEqual(self.r1.area, 50)
+
+    def test_area_2(self):
+        self.assertEqual(self.r2.area, 49)
+
+    def test_perimeter_1(self):
+        self.assertEqual(self.r1.perimeter, 30)
+
+    def test_perimeter_2(self):
+        self.assertEqual(self.r2.perimeter, 28)
+
+class TestSquare(unittest.TestCase):
+    def setUp(self) -> None:
+        self.s1 = Square(10)
+
+    def test_area(self):
+        self.assertEqual(self.s1.area, 100)
+
+    def test_perimeter(self):
+        self.assertEqual(self.s1.perimeter, 40)
+
+    def test_catch_null_side(self):
+        self.assertRaises(ValueError, Square, 0)
 
 if __name__ == '__main__':
     unittest.main()
