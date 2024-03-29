@@ -1,7 +1,9 @@
 import unittest
 
-from figure.convex_polygon.rectangle import Rectangle
-from figure.convex_polygon.square import Square
+from shape.convex_polygon.rectangle import Rectangle
+from shape.convex_polygon.square import Square
+from shape.convex_polygon.rhombus import Rhombus
+from shape.convex_polygon.parallelepiped import Parallelepiped
 from .circle import Circle
 from .convex_polygon.triangle import Triangle
 
@@ -29,7 +31,6 @@ class TestCircle(unittest.TestCase):
         c = Circle(2.5)
         self.assertAlmostEqual(c.perimeter, 15.7, places=1)
 
-
 class TestTriangle(unittest.TestCase):
     def setUp(self):
         self.t_int = Triangle(9, 12, 15)
@@ -42,7 +43,7 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(self.t_int.area, 54)
 
     def test_area_float(self):
-        self.assertAlmostEqual(self.t_float.area, 3.49857, places=5)
+        self.assertEqual(self.t_float.area, 3.499)
 
     def test_perimeter_int(self):
         self.assertEqual(self.t_int.perimeter, 36)
@@ -87,7 +88,7 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(self.t_2.perimeter, 22.3)
 
     def test_area_t_3(self):
-        self.assertAlmostEqual(self.t_3.area, 12.167, 3)
+        self.assertEqual(self.t_3.area, 12.167)
 
     def test_perimeter_t_3(self):
         self.assertEqual(self.t_3.perimeter, 27.53)
@@ -120,6 +121,40 @@ class TestSquare(unittest.TestCase):
 
     def test_catch_null_side(self):
         self.assertRaises(ValueError, Square, 0)
+
+class TestRhombus(unittest.TestCase):
+    def setUp(self) -> None:
+        self.r1 = Rhombus(5, 30)
+        self.r2 = Rhombus(6, 90)
+
+    def test_area_1(self):
+        self.assertEqual(self.r1.area, 12.5)
+
+    def test_area_2(self):
+        self.assertEqual(self.r2.area, 36)
+
+    def test_perimeter_1(self):
+        self.assertEqual(self.r1.perimeter, 20)
+
+    def test_perimeter_2(self):
+        self.assertEqual(self.r2.perimeter, 24)
+
+class TestParallelepiped(unittest.TestCase):
+    def setUp(self) -> None:
+        self.p1 = Parallelepiped(7, 3, 55)
+        self.p2 = Parallelepiped(12, 25, 23)
+
+    def test_area_1(self):
+        self.assertAlmostEqual(self.p1.area, 17.2, places=2)
+
+    def test_area_2(self):
+        self.assertAlmostEqual(self.p2.area, 117.219, places=3)
+
+    def test_perimeter_1(self):
+        self.assertEqual(self.p1.perimeter, 20)
+
+    def test_perimeter_2(self):
+        self.assertEqual(self.p2.perimeter, 74)
 
 if __name__ == '__main__':
     unittest.main()
