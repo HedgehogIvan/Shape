@@ -18,7 +18,7 @@ class Triangle(ConvexPolygon):
             (semi_p - self.sides[1]) *
             (semi_p - self.sides[2])
         )
-        return area
+        return round(area, 3)
 
     def is_right(self) -> bool:
         """

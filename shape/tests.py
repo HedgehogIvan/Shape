@@ -6,11 +6,11 @@ from .convex_polygon.triangle import Triangle
 class TestCircle(unittest.TestCase):
     def test_area_int(self):
         c = Circle(5)
-        self.assertAlmostEqual(c.area, 78.5, places=1)
+        self.assertEqual(c.area, 78.54)
 
     def test_area_float(self):
         c = Circle(2.5)
-        self.assertAlmostEqual(c.area, 19.63495, places=5)
+        self.assertEqual(c.area, 19.635)
 
     def test_catch_zero_radius(self):
         self.assertRaises(ValueError, Circle, 0)
@@ -39,7 +39,7 @@ class TestTriangle(unittest.TestCase):
         self.assertEqual(self.t_int.area, 54)
 
     def test_area_float(self):
-        self.assertAlmostEqual(self.t_float.area, 3.49857, places=5)
+        self.assertEqual(self.t_float.area, 3.499)
 
     def test_perimeter_int(self):
         self.assertEqual(self.t_int.perimeter, 36)
@@ -72,19 +72,19 @@ class TestTriangle(unittest.TestCase):
         self.assertRaises(ValueError, Triangle, 9, 12, 21)
 
     def test_area_t_1(self):
-        self.assertAlmostEqual(self.t_1.area, 1558.8, 1)
+        self.assertEqual(self.t_1.area, 1558.846)
 
     def test_perimeter_t_1(self):
         self.assertEqual(self.t_1.perimeter, 180)
 
     def test_area_t_2(self):
-        self.assertAlmostEqual(self.t_2.area, 17.42, 2)
+        self.assertEqual(self.t_2.area, 17.424)
 
     def test_perimeter_t_2(self):
         self.assertEqual(self.t_2.perimeter, 22.3)
 
     def test_area_t_3(self):
-        self.assertAlmostEqual(self.t_3.area, 12.167, 3)
+        self.assertEqual(self.t_3.area, 12.167)
 
     def test_perimeter_t_3(self):
         self.assertEqual(self.t_3.perimeter, 27.53)
