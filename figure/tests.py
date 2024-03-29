@@ -12,6 +12,12 @@ class TestCircle(unittest.TestCase):
         c = Circle(2.5)
         self.assertAlmostEqual(c.area, 19.63495, places=5)
 
+    def test_catch_zero_radius(self):
+        self.assertRaises(ValueError, Circle, 0)
+
+    def test_catch_negative_radius(self):
+        self.assertRaises(ValueError, Circle, -2)
+
     def test_perimeter_int(self):
         c = Circle(5)
         self.assertAlmostEqual(c.perimeter, 31.4, places=1)
@@ -22,29 +28,46 @@ class TestCircle(unittest.TestCase):
 
 
 class TestTriangle(unittest.TestCase):
+    def setUp(self):
+        self.t_int = Triangle(9, 12, 15)
+        self.t_float = Triangle(3.5, 4.6, 7.9)
+
     def test_area_int(self):
-        t = Triangle(9, 12, 15)
-        self.assertEqual(t.area, 54)
+        self.assertEqual(self.t_int.area, 54)
 
     def test_area_float(self):
-        t = Triangle(3.5, 4.6, 7.9)
-        self.assertAlmostEqual(t.area, 3.49857, places=5)
+        self.assertAlmostEqual(self.t_float.area, 3.49857, places=5)
 
     def test_perimeter_int(self):
-        t = Triangle(9, 12, 15)
-        self.assertEqual(t.perimeter, 36)
+        self.assertEqual(self.t_int.perimeter, 36)
 
     def test_perimeter_float(self):
-        t = Triangle(3.5, 4.6, 7.9)
-        self.assertAlmostEqual(t.perimeter, 16, 1)
+        self.assertAlmostEqual(self.t_float.perimeter, 16, 1)
 
     def test_is_right(self):
-        t = Triangle(9, 12, 15)
-        self.assertTrue(t.is_right())
+        self.assertTrue(self.t_int.is_right())
 
     def test_isnt_right(self):
-        t = Triangle(3.5, 4.6, 7.9)
-        self.assertFalse(t.is_right())
+        self.assertFalse(self.t_float.is_right())
+
+    def test_catch_null_side(self):
+        self.assertRaises(ValueError, Triangle, 0, 4, 6)
+
+    def test_catch_all_null_sides(self):
+        self.assertRaises(ValueError, Triangle, 0, 0, 0)
+
+    def test_catch_negative_side(self):
+        self.assertRaises(ValueError, Triangle, 3, 5, -2)
+
+    def test_catch_all_negative_sides(self):
+        self.assertRaises(ValueError, Triangle, -1, -3, -2.5)
+
+    def test_catch_sum_error(self):
+        self.assertRaises(ValueError, Triangle, 9, 12, 25)
+
+    def test_catch_sum_eq_error(self):
+        self.assertRaises(ValueError, Triangle, 9, 12, 21)
+
 
 if __name__ == '__main__':
     unittest.main()
