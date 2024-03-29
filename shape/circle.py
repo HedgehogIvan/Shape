@@ -11,7 +11,7 @@ class Circle(Figure):
         super().__init__()
 
     def get_area(self):
-        return pi * pow(self.radius, 2)
+        return round(pi * pow(self.radius, 2), 3)
 
     def get_perimeter(self):
         return 2 * pi * self.radius

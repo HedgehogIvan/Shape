@@ -11,11 +11,11 @@ from .convex_polygon.triangle import Triangle
 class TestCircle(unittest.TestCase):
     def test_area_int(self):
         c = Circle(5)
-        self.assertAlmostEqual(c.area, 78.5, places=1)
+        self.assertEqual(c.area, 78.54)
 
     def test_area_float(self):
         c = Circle(2.5)
-        self.assertAlmostEqual(c.area, 19.63495, places=5)
+        self.assertEqual(c.area, 19.635)
 
     def test_catch_zero_radius(self):
         self.assertRaises(ValueError, Circle, 0)
