@@ -20,9 +20,6 @@ class Triangle(ConvexPolygon):
         )
         return area
 
-    def get_perimeter(self):
-        return sum(self.sides)
-
     def is_right(self) -> bool:
         """
         Метод для определения, является ли треугольник прямоугольным

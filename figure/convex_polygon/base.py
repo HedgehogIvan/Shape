@@ -83,3 +83,6 @@ class ConvexPolygon(Figure):
         :return: Параметры многоугольника
         """
         pass
+
+    def get_perimeter(self):
+        return sum(self.sides)
