@@ -4,7 +4,11 @@ from math import sqrt, pow, degrees, acos
 
 class Triangle(ConvexPolygon):
     def __init__(self, side1, side2, side3):
-        super().__init__(*self._convert_to_polygon({"sides": [side1, side2, side3]}))
+        super().__init__(
+            *self._convert_to_polygon(
+                {"sides": [side1, side2, side3]}
+            )
+        )
 
     def get_area(self):
         semi_p = self.get_perimeter() / 2
@@ -47,6 +51,9 @@ class Triangle(ConvexPolygon):
         sides = dict_sides["sides"]
         s1, s2, s3 = sides
 
+        self._catch_wrong_sides_value(sides)
+
+        # Генерация углов на основе сторон
         ang_1 = degrees(acos(
             (pow(s1, 2) + pow(s2, 2) - pow(s3, 2)) / (2 * s1 * s2)
         ))

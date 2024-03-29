@@ -29,9 +29,13 @@ class ConvexPolygon(Figure):
         :param sides: список сторон многоугольника
         :return: вызывает ошибку, если какое-то из правил нарушено
         """
-        for i, side in enumerate(sides):
+        # Пришлось разделить проверки на отрицательные стороны и сумму сторон
+        # Так как есть вариации, когда при отрицательной стороне раньше срабатывает ошибка с суммой сторон
+        for side in sides:
             if side <= 0:
                 raise ValueError('Сторона многоугольника должна быть больше нуля')
+
+        for i, side in enumerate(sides):
             if self._check_sum_sides_error(i, sides):
                 raise ValueError(
                     'В многоугольнике есть сторона, которая больше суммы остальных её сторон. '
@@ -72,4 +76,10 @@ class ConvexPolygon(Figure):
             )
 
     def _convert_to_polygon(self, **params):
+        """
+        Метод для преобразования параметров, необходимых для фигуры
+        в параметры для многоугольника и его методов
+        :param params: Параметры фигуры
+        :return: Параметры многоугольника
+        """
         pass
